@@ -1,0 +1,265 @@
+@import 'variables';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+// Reset and base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $text-color;
+  background-color: $background-color;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  color: $heading-color;
+  margin-bottom: $spacing-md;
+  font-weight: 600;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+p {
+  margin-bottom: $spacing-md;
+}
+
+// Layout
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+}
+
+// Components
+.btn {
+  display: inline-block;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  outline: none;
+
+  &-primary {
+    background-color: $primary-color;
+    color: white;
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+
+  &-accent {
+    background-color: $accent-color;
+    color: white;
+    &:hover {
+      background-color: darken($accent-color, 10%);
+    }
+  }
+}
+
+// Card styles
+.card {
+  background-color: $card-bg;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-lg;
+  box-shadow: $shadow-sm;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+}
+
+// Post card specific styles
+.post-card {
+  @extend .card;
+
+  h2 {
+    color: $primary-color;
+    margin-bottom: $spacing-sm;
+  }
+
+  .post-meta {
+    color: lighten($text-color, 20%);
+    font-size: 0.9rem;
+    margin-bottom: $spacing-md;
+  }
+
+  .post-excerpt {
+    color: $text-color;
+    margin-bottom: $spacing-lg;
+  }
+
+  .post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: $spacing-md;
+    border-top: 1px solid $border-color;
+  }
+}
+
+// Form styles
+.form-group {
+  margin-bottom: $spacing-lg;
+
+  label {
+    display: block;
+    margin-bottom: $spacing-xs;
+    color: $heading-color;
+    font-weight: 500;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: $spacing-sm;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    
+    &:focus {
+      outline: none;
+      border-color: $accent-color;
+    }
+  }
+}
+
+// Table styles
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: $spacing-lg;
+
+  th, td {
+    padding: $spacing-sm $spacing-md;
+    border-bottom: 1px solid $border-color;
+    text-align: left;
+  }
+
+  th {
+    background-color: lighten($primary-color, 65%);
+    font-weight: 600;
+  }
+
+  tr:hover {
+    background-color: lighten($background-color, 2%);
+  }
+}
+
+// Alert styles
+.alert {
+  padding: $spacing-md;
+  border-radius: $border-radius;
+  margin-bottom: $spacing-lg;
+
+  &-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+
+  &-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+}
+
+// Modal styles
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: $card-bg;
+  border-radius: $border-radius;
+  padding: $spacing-lg;
+  max-width: 500px;
+  width: 100%;
+  margin: $spacing-md;
+  box-shadow: $shadow-lg;
+}
+
+// Header styles
+.app-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: $card-bg;
+  border-bottom: 1px solid $border-color;
+  z-index: 100;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+  padding: 0 $container-padding;
+}
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: $primary-color;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+.logo:hover, .logo:focus {
+  color: $accent-color;
+}
+.nav-links {
+  display: flex;
+  gap: $spacing-lg;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-links li a {
+  color: $text-color;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-links li a:hover, .nav-links li a:focus, .nav-links li a.active {
+  background: $accent-color;
+  color: #fff;
+}
+@media (max-width: 768px) {
+  .header-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: $spacing-sm $container-padding;
+  }
+  .nav-links {
+    gap: $spacing-md;
+  }
+  .logo {
+    font-size: 1.5rem;
+  }
+} 
