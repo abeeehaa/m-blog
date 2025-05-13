@@ -1,8 +1,13 @@
 import { Routes } from '@angular/router';
+import { CartComponent } from './components/cart/cart.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 
 export const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'blog' },
+  { path: 'items', component: ProductListComponent },
+  { path: 'cart', component: CartComponent },
   {
-    path: '',
+    path: 'blog',
     loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule)
   },
   {
